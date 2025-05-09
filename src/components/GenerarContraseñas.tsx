@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-// definir la interfaz para las opciones de contraseña
+// define la interfaz para las opciones de contraseña
 interface OpcionesContraseña {
     mayusculas: boolean
     numeros: boolean
@@ -19,7 +19,7 @@ function GenerarContraseña() {
     const [mensaje, setMensaje] = useState<string>("")
 
     function generarContraseña(): void {
-        // validaciones basicas
+        // validaciones basicas para mayor seguridad
         if (longitud < 8) {
             setMensaje("La longitud mínima debe ser 8 caracteres")
             return
@@ -30,7 +30,6 @@ function GenerarContraseña() {
             return
         }
 
-        // conjuntos de caracteres
         const chars = {
             minusculas: "abcdefghijklmnopqrstuvwxyz",
             mayusculas: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -38,7 +37,7 @@ function GenerarContraseña() {
             especiales: "!@#$%^&*()_-+=<>?",
         }
 
-        // crear contraseña con al menos un caracter de cada tipo requerido
+        // crea contraseña con al menos un caracter de cada tipo requerido
         let pwd = ""
         if (opciones.mayusculas) pwd += chars.mayusculas[Math.floor(Math.random() * chars.mayusculas.length)]
         if (opciones.numeros) pwd += chars.numeros[Math.floor(Math.random() * chars.numeros.length)]
